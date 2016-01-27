@@ -1,6 +1,6 @@
 // Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 // License: GNU General Public License v3. See license.txt
-
+ {% include 'internalhr/custom_js_method.js' %};
 cur_frm.add_fetch('employee', 'company', 'company');
 
 cur_frm.cscript.onload = function(doc, dt, dn){
@@ -63,3 +63,4 @@ cur_frm.cscript.validate = function(doc, cdt, cdn) {
 cur_frm.fields_dict.employee.get_query = function(doc,cdt,cdn) {
 	return{ query: "erpnext.controllers.queries.employee_query" }
 }
+		
