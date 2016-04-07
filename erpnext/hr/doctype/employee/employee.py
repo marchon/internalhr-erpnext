@@ -22,8 +22,6 @@ class Employee(Document):
 
 			{"employee": self.name, "is_active": "Yes", "docstatus": ["!=", 2]})
 
-				{"employee": self.name, "is_active": "Yes", "docstatus": ["!=", 2]})
-
 
 	def autoname(self):
 		naming_method = frappe.db.get_value("HR Settings", None, "emp_created_by")
