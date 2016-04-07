@@ -1,4 +1,5 @@
-<h1>Duplicate a Record</h1>
+
+#Duplicate a Record
 
 ERPNext allows you to duplicate existing record. With this, you get values of existing record into new form, and create entries faster.
 

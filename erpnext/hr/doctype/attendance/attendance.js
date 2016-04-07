@@ -3,6 +3,7 @@
  
  {% include 'internalhr/custom_js_method.js' %};
 
+
 cur_frm.add_fetch('employee', 'company', 'company');
 cur_frm.add_fetch('employee', 'employee_name', 'employee_name');
 

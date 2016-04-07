@@ -161,7 +161,7 @@ class SellingController(StockController):
 		for d in self.get("items"):
 			if d.qty is None:
 				frappe.throw(_("Row {0}: Qty is mandatory").format(d.idx))
-														
+
 			if self.has_product_bundle(d.item_code):
 				for p in self.get("packed_items"):
 					if p.parent_detail_docname == d.name and p.parent_item == d.item_code:
@@ -210,6 +210,8 @@ class SellingController(StockController):
 		total_delivered_qty = (flt(delivered_via_dn[0][0]) if delivered_via_dn else 0) \
 			+ (flt(delivered_via_si[0][0]) if delivered_via_si else 0)
 		
+
+
 		return total_delivered_qty
 
 	def get_so_qty_and_warehouse(self, so_detail):
@@ -230,10 +232,10 @@ def check_active_sales_items(obj):
 	for d in obj.get("items"):
 		if d.item_code:
 			item = frappe.db.sql("""select docstatus, is_sales_item,
-				is_service_item, income_account from tabItem where name = %s""",
+				income_account from tabItem where name = %s""",
 				d.item_code, as_dict=True)[0]
-			if item.is_sales_item == 0 and item.is_service_item == 0:
-				frappe.throw(_("Item {0} must be Sales or Service Item in {1}").format(d.item_code, d.idx))
+			if item.is_sales_item == 0:
+				frappe.throw(_("Item {0} must be a Sales Item in {1}").format(d.item_code, d.idx))
 			if getattr(d, "income_account", None) and not item.income_account:
 				frappe.db.set_value("Item", d.item_code, "income_account",
 					d.income_account)

@@ -106,6 +106,8 @@ class TestMaterialRequest(unittest.TestCase):
 		mr.submit()
 
 		# check if per complete is None
+
+		mr.load_from_db()
 		self.assertEquals(mr.per_ordered, 0)
 		self.assertEquals(mr.get("items")[0].ordered_qty, 0)
 		self.assertEquals(mr.get("items")[1].ordered_qty, 0)
@@ -173,6 +175,8 @@ class TestMaterialRequest(unittest.TestCase):
 		mr.submit()
 
 		# check if per complete is None
+
+		mr.load_from_db()
 		self.assertEquals(mr.per_ordered, 0)
 		self.assertEquals(mr.get("items")[0].ordered_qty, 0)
 		self.assertEquals(mr.get("items")[1].ordered_qty, 0)
@@ -262,6 +266,8 @@ class TestMaterialRequest(unittest.TestCase):
 		mr.submit()
 
 		# check if per complete is None
+
+		mr.load_from_db()
 		self.assertEquals(mr.per_ordered, 0)
 		self.assertEquals(mr.get("items")[0].ordered_qty, 0)
 		self.assertEquals(mr.get("items")[1].ordered_qty, 0)

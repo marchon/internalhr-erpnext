@@ -17,7 +17,9 @@ Based on the selection of time slot, Start Time and End Time will be updated in 
 
 ####Event Based on Lead
 
-In the Lead form, you will find a field called Next Contact By and Next Contact Date. Event will be auto created for date and person person specified in this field.
+
+In the Lead form, you will find a field called Next Contact By and Next Contact Date. Event will be auto created for date and person specified in this field.
+>>>>>>> 123ca0fdcd400452c87e27a7ba39cde522f8f75f
 
 ![Calender Event Lead]({{docs_base_url}}/assets/old_images/erpnext/calender-event-lead.png)
 
@@ -46,7 +48,8 @@ There are two ways you can receive email reminder for an event.
 
 ####Enable Reminder in Event
 
-In the Event master, checking "Send an email reminder in the morning" will trigger notifcation email to all the participants for this event.
+
+In the Event master, checking "Send an email reminder in the morning" will trigger notification email to all the participants for this event.
 
 ![Calender Event Notification]({{docs_base_url}}/assets/old_images/erpnext/calender-event-notification.png)
 

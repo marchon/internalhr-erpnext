@@ -1,4 +1,5 @@
-<h1>Renaming Documents</h1>
+
+#Renaming Documents
 
 ERPNext has Renaming feature which allows you to correct primary id of a record. 
 	

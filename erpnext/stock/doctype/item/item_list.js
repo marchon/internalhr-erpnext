@@ -2,6 +2,8 @@ frappe.listview_settings['Item'] = {
 	add_fields: ["item_name", "stock_uom", "item_group", "image", "variant_of",
 		"has_variants", "end_of_life", "disabled", "is_sales_item"],
 
+	filters: [["disabled", "=", "0"]],
+
 	get_indicator: function(doc) {
 		if (doc.disabled) {
 			return [__("Disabled"), "grey", "disabled,=,Yes"];

@@ -1,4 +1,5 @@
-<h1>Search Filters</h1>
+
+#Search Filters
 
 Search Filter option allows user to filter records based on value in the specific fields of that form.
 

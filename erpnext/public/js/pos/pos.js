@@ -238,6 +238,10 @@ erpnext.pos.PointOfSale = Class.extend({
 	},
 	refresh_fields: function() {
 		this.party_field.set_input(this.frm.doc[this.party.toLowerCase()]);
+		this.party_field.frm = this.frm;
+		this.party_field.doctype = this.frm.doctype;
+		this.party_field.docname = this.frm.docname;
+
 		this.wrapper.find('input.discount-percentage').val(this.frm.doc.additional_discount_percentage);
 		this.wrapper.find('input.discount-amount').val(this.frm.doc.discount_amount);
 
@@ -445,6 +449,17 @@ erpnext.pos.PointOfSale = Class.extend({
 									var rounded_change = 0;
 								}
 								
+								var actual_change = flt(values.paid_amount - values.total_amount,
+									precision("paid_amount"));
+
+								if (actual_change > 0) {
+									var rounded_change =
+										round_based_on_smallest_currency_fraction(actual_change,
+											me.frm.doc.currency, precision("paid_amount"));
+								} else {
+									var rounded_change = 0;
+								}
+
 								dialog.set_value("change", rounded_change);
 								dialog.get_input("change").trigger("change");
 
