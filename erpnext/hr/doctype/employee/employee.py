@@ -33,9 +33,9 @@ class Employee(Document):
 				self.name = make_autoname(self.naming_series + '.####')
 			elif naming_method=='Employee Number':
 
-			if naming_method == 'Naming Series':
-				self.name = make_autoname(self.naming_series + '.####')
-			elif naming_method == 'Employee Number':
+			# if naming_method == 'Naming Series':
+			# 	self.name = make_autoname(self.naming_series + '.####')
+			# elif naming_method == 'Employee Number':
 
 				self.name = self.employee_number
 
