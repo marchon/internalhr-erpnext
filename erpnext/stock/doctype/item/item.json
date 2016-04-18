@@ -2499,6 +2499,5 @@
  "read_only_onload": 0, 
  "search_fields": "item_name,description,item_group,customer_code", 
  "sort_order": "DESC", 
- "title_field": "item_name", 
- "track_seen": 0
+ "title_field": "item_name"
 }
