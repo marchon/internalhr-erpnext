@@ -6,7 +6,7 @@ import frappe
 from frappe.utils import cint, flt, cstr, comma_or
 from erpnext.setup.utils import get_company_currency
 from frappe import _, throw
-from erpnext.stock.get_item_details import get_available_qty
+from erpnext.stock.get_item_details import get_bin_details
 
 from erpnext.controllers.stock_controller import StockController
 
@@ -24,7 +24,7 @@ class SellingController(StockController):
 	def onload(self):
 		if self.doctype in ("Sales Order", "Delivery Note", "Sales Invoice"):
 			for item in self.get("items"):
-				item.update(get_available_qty(item.item_code,
+				item.update(get_bin_details(item.item_code,
 					item.warehouse))
 
 	def validate(self):
@@ -51,7 +51,10 @@ class SellingController(StockController):
 
 		elif getattr(self, "lead", None):
 			from erpnext.crm.doctype.lead.lead import get_lead_details
-			self.update_if_missing(get_lead_details(self.lead))
+			self.update_if_missing(get_lead_details(
+				self.lead,
+				posting_date=self.get('transaction_date') or self.get('posting_date'),
+				company=self.company))
 
 	def set_price_list_and_item_details(self):
 		self.set_price_list_currency("Selling")
@@ -221,11 +224,11 @@ class SellingController(StockController):
 		so_warehouse = so_item and so_item[0]["warehouse"] or ""
 		return so_qty, so_warehouse
 
-	def check_stop_or_close_sales_order(self, ref_fieldname):
+	def check_close_sales_order(self, ref_fieldname):
 		for d in self.get("items"):
 			if d.get(ref_fieldname):
 				status = frappe.db.get_value("Sales Order", d.get(ref_fieldname), "status")
-				if status in ("Stopped", "Closed"):
+				if status == "Closed":
 					frappe.throw(_("Sales Order {0} is {1}").format(d.get(ref_fieldname), status))
 
 def check_active_sales_items(obj):

@@ -5,6 +5,7 @@
 
 
 cur_frm.add_fetch('employee', 'company', 'company');
+cur_frm.add_fetch('company', 'default_letter_head', 'letter_head');
 
 cur_frm.cscript.onload = function(doc, dt, dn){
 	e_tbl = doc.earnings || [];
