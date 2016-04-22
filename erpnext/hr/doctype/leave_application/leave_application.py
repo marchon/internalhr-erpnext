@@ -216,7 +216,7 @@ class LeaveApplication(Document):
 
 	def notify(self, args):
 		args = frappe._dict(args)
-		from frappe.desk.page.chat.chat import post
+		from frappe.desk.page.messages.messages import post
 		post(**{"txt": args.message, "contact": args.message_to, "subject": args.subject,
 			"notify": cint(self.follow_via_email)})
 
